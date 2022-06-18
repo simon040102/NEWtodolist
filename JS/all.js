@@ -12,7 +12,11 @@ axios
     init();
   });
 
-
+text.addEventListener('keydown',enter)
+function enter(e){
+  if(e.keyCode!==13){return}
+  saveData();
+}
 
 //重新整理資料
 function init() {
@@ -59,7 +63,6 @@ function remove(e) {
   if (e.target.nodeName == 'IMG' && e.target.nodeName !== 'A') {
     let obj = {};
     let id = data[num].id;
-    console.log(id)
     if (check == 'false') {
       obj.check = data[num].check = 'true';
       obj.finished = data[num].finished = 'confirm-finished';
