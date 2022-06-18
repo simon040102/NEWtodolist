@@ -58,11 +58,13 @@ function remove(e) {
 
   if (e.target.nodeName == 'IMG' && e.target.nodeName !== 'A') {
     let obj = {};
+    let id = data[num].id;
+    console.log(id)
     if (check == 'false') {
       obj.check = data[num].check = 'true';
       obj.finished = data[num].finished = 'confirm-finished';
       obj.del = data[num].del = 'finished';
-      axios.patch(`https://fathomless-brushlands-42339.herokuapp.com/todo4/${Number(num) + 1}`,obj)
+      axios.patch(`https://fathomless-brushlands-42339.herokuapp.com/todo4/${id}`,obj)
       .then(function(response){
         console.log(response.data)
       })
@@ -71,14 +73,15 @@ function remove(e) {
       obj.check = data[num].check = 'false';
       obj.finished = data[num].finished = '';
       obj.del = data[num].del = '';
-           axios.patch(
-             `https://fathomless-brushlands-42339.herokuapp.com/todo4/${
-               Number(num) + 1
-             }`,
-             obj
-           ).then(function(response){
-            console.log(response.data)
-           });
+           axios
+             .patch(
+               `https://fathomless-brushlands-42339.herokuapp.com/todo4/${id}
+             `,
+               obj
+             )
+             .then(function (response) {
+               console.log(response.data);
+             });
 
     }
 
